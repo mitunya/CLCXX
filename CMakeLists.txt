@@ -91,7 +91,11 @@ target_include_directories(${CLCXX_TARGET} PUBLIC
 
 target_compile_options(${CLCXX_TARGET} PUBLIC "$<$<COMPILE_LANGUAGE:CXX>:-std=c++14>"  "-Wall")
 
-target_link_libraries(${CLCXX_TARGET}  "-Wl,--no-undefined" "-Wl,--no-allow-shlib-undefined" )
+if (APPLE)
+  target_link_libraries(${CLCXX_TARGET} )
+else()
+  target_link_libraries(${CLCXX_TARGET}  "-Wl,--no-undefined" "-Wl,--no-allow-shlib-undefined" )
+endif()
 set_target_properties(${CLCXX_TARGET} PROPERTIES
   PUBLIC_HEADER "${CLCXX_HEADERS}"
   COMPILE_DEFINITIONS "CLCXX_EXPORTS")
