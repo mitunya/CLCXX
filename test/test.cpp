@@ -8,7 +8,7 @@ class xx {
   xx(int xx, int yy) : y(yy), x(xx) {}
   std::string greet() { return "Hello, World"; }
   void operator()(void){
-    std::cout<< "Hello"<<endl;
+    std::cout<< "Hello"<<std::endl;
   }
   int y;
   int x;
